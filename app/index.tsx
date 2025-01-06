@@ -14,6 +14,7 @@ import { StorageDialog } from "@/components/StorageDialog";
 import { useStorageStore } from "@/features/storage/storage.store";
 import { useShallow } from "zustand/shallow";
 import { getDurationFormatted } from "@/features/utils";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const [recording, setRecording] = useState<Recording | undefined>(undefined);
@@ -82,7 +83,7 @@ export default function App() {
   }
 
   return (
-    <View className="flex justify-between flex-1">
+    <SafeAreaView className="flex justify-between flex-1">
       <Text className="text-2xl text-center">Dictaphone</Text>
       <View className="flex flex-1 w-full">
         <View className="flex flex-row justify-between w-full ">
@@ -103,6 +104,6 @@ export default function App() {
           {recordingStatus?.isRecording ? <StopCircle /> : <Mic />}
         </Button>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
