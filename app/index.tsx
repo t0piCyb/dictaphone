@@ -92,7 +92,7 @@ export default function App() {
         </View>
         <FileExplorator />
       </View>
-      <View className="flex items-center justify-center w-full my-2 border-t border-muted-foreground">
+      <View className="flex items-center justify-center w-full my-2 border-t shadow-md shadow-border border-border">
         <Text className="text-xl text-center text-muted-foreground">
           {recordingStatus?.isRecording
             ? getDurationFormatted(recordingStatus?.durationMillis)
@@ -100,7 +100,7 @@ export default function App() {
         </Text>
         <Button
           onPress={recording ? stopRecording : startRecording}
-          className="bg-red-500 rounded-full"
+          className="bg-red-500 rounded-full shadow-sm"
           variant={"default"}
           size={"lg"}
         >
