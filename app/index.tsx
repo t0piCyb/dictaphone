@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
 import { Audio } from "expo-av";
 import { Recording, RecordingStatus } from "expo-av/build/Audio";
@@ -6,10 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import { Mic } from "@/components/icons/Mic";
 import { StopCircle } from "@/components/icons/StopCircle";
-import { Card } from "@/components/ui/Card";
 import { FileExplorator } from "@/components/FileExplorator";
 import * as FileSystem from "expo-file-system";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StorageDialog } from "@/components/StorageDialog";
 import { useStorageStore } from "@/features/storage/storage.store";
 import { useShallow } from "zustand/shallow";
@@ -100,8 +98,19 @@ export default function App() {
             ? getDurationFormatted(recordingStatus?.durationMillis)
             : ""}
         </Text>
-        <Button onPress={recording ? stopRecording : startRecording}>
-          {recordingStatus?.isRecording ? <StopCircle /> : <Mic />}
+        <Button
+          onPress={recording ? stopRecording : startRecording}
+          className="bg-red-500 rounded-full"
+          variant={"default"}
+          size={"lg"}
+        >
+          <Text>
+            {recordingStatus?.isRecording ? (
+              <StopCircle color={"white"} />
+            ) : (
+              <Mic color={"white"} />
+            )}
+          </Text>
         </Button>
       </View>
     </SafeAreaView>

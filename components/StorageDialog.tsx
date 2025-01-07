@@ -12,11 +12,10 @@ import {
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 import { Text } from "./ui/Text";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as FileSystem from "expo-file-system";
-import { MoreVertical } from "lucide-react-native";
 import { useStorageStore } from "@/features/storage/storage.store";
 import { useShallow } from "zustand/shallow";
+import { Settings } from "@/components/icons/Settings";
 
 export const StorageDialog = (props: { isOpen?: boolean }) => {
   const { directoryName, setDirectoryName, setDirectoryUri } = useStorageStore(
@@ -66,7 +65,7 @@ export const StorageDialog = (props: { isOpen?: boolean }) => {
       {typeof props.isOpen !== "boolean" && (
         <DialogTrigger asChild>
           <Button variant={"ghost"}>
-            <MoreVertical />
+            <Settings />
           </Button>
         </DialogTrigger>
       )}

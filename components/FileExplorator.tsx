@@ -39,7 +39,7 @@ export const FileExplorator = () => {
         className="flex-1 w-full"
         data={listFiles}
         renderItem={({ item }) => <FileComponent name={item}></FileComponent>}
-        ListEmptyComponent={<Text>No files</Text>}
+        ListEmptyComponent={<Text className="text-center">No files</Text>}
       />
     </View>
   );
