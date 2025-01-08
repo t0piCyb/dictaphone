@@ -65,7 +65,7 @@ export const StorageDialog = (props: { isOpen?: boolean }) => {
       {typeof props.isOpen !== "boolean" && (
         <DialogTrigger asChild>
           <Button variant={"ghost"}>
-            <Settings />
+            <Settings className="light:text-primary-foreground dark:text-secondary-foreground" />
           </Button>
         </DialogTrigger>
       )}

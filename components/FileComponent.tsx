@@ -98,19 +98,19 @@ export const FileComponent = (props: { name: string }) => {
         <View className="flex flex-row justify-around gap-1">
           <Button variant={"ghost"} onPress={deleteFile}>
             <Text>
-              <Trash />
+              <Trash className="light:text-primary-foreground dark:text-secondary-foreground" />
             </Text>
           </Button>
           {sound && soundStatus?.isPlaying ? (
             <Button variant={"ghost"} onPress={pauseSound}>
               <Text>
-                <Pause />
+                <Pause className="light:text-primary-foreground dark:text-secondary-foreground" />
               </Text>
             </Button>
           ) : (
             <Button variant={"ghost"} onPress={playSound}>
               <Text>
-                <Play />
+                <Play className="light:text-primary-foreground dark:text-secondary-foreground" />
               </Text>
             </Button>
           )}

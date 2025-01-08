@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "./ui/Dialog";
 import { Button } from "./ui/Button";
-import { Edit2 } from "lucide-react-native";
+import { Edit2 } from "@/components/icons/Edit2";
 import { Input } from "./ui/Input";
 
 import { useState } from "react";
@@ -44,7 +44,7 @@ export const RenameDialog = (props: { name: string }) => {
       <DialogTrigger asChild>
         <Button variant={"ghost"}>
           <Text>
-            <Edit2 />
+            <Edit2 className="light:text-primary-foreground dark:text-secondary-foreground" />
           </Text>
         </Button>
       </DialogTrigger>
