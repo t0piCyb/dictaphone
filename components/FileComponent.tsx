@@ -8,7 +8,7 @@ import {
 import { Button } from "./ui/Button";
 import { Play } from "@/components/icons/Play";
 import { Trash } from "@/components/icons/Trash";
-
+import Slider from "@react-native-community/slider";
 import * as FileSystem from "expo-file-system";
 import { useStorageStore } from "@/features/storage/storage.store";
 import { useShallow } from "zustand/shallow";
@@ -16,7 +16,6 @@ import { RenameDialog } from "./RenameDialog";
 import { View } from "react-native";
 import { Audio, AVPlaybackStatus, AVPlaybackStatusSuccess } from "expo-av";
 import { Pause } from "./icons/Pause";
-import { Progress } from "./ui/Progress";
 import { getDurationFormatted } from "@/features/utils";
 
 export const FileComponent = (props: { name: string }) => {
@@ -64,12 +63,6 @@ export const FileComponent = (props: { name: string }) => {
     reloadListFiles();
   };
 
-  const getDurationPercentage = (milliseconds: number) => {
-    const percentage =
-      (milliseconds / (soundStatus?.durationMillis ?? 1)) * 100;
-    return percentage;
-  };
-
   return (
     <Collapsible className="border-b border-border">
       <CollapsibleTrigger asChild>
@@ -81,9 +74,12 @@ export const FileComponent = (props: { name: string }) => {
       <CollapsibleContent className="">
         {soundStatus?.isPlaying && (
           <View className="flex flex-col justify-around gap-1 m-2">
-            <Progress
-              value={getDurationPercentage(soundStatus.positionMillis)}
-            ></Progress>
+            <Slider
+              maximumValue={soundStatus.durationMillis}
+              value={soundStatus.positionMillis}
+              onValueChange={(value) => sound?.setPositionAsync(value)}
+            ></Slider>
+
             <View className="flex flex-row justify-between gap-1">
               <Text className="text-sm text-muted-foreground">
                 {getDurationFormatted(soundStatus.positionMillis)}
