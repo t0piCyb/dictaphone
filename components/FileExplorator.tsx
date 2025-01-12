@@ -11,7 +11,6 @@ import { useShallow } from "zustand/shallow";
 import { FileComponent } from "./FileComponent";
 
 export const FileExplorator = () => {
-  const [files, setFiles] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const { directoryUri, directoryName, listFiles, reloadListFiles } =
@@ -30,6 +29,10 @@ export const FileExplorator = () => {
 
   if (directoryUri === null && !isOpen) {
     setIsOpen(true);
+  }
+
+  if (directoryUri !== null && isOpen) {
+    setIsOpen(false);
   }
 
   return (
