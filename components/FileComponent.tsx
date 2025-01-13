@@ -77,7 +77,7 @@ export const FileComponent = (props: { name: string }) => {
             <Slider
               maximumValue={soundStatus.durationMillis}
               value={soundStatus.positionMillis}
-              onValueChange={(value) => sound?.setPositionAsync(value)}
+              onSlidingComplete={(value) => sound?.setPositionAsync(value)}
             ></Slider>
 
             <View className="flex flex-row justify-between gap-1">
