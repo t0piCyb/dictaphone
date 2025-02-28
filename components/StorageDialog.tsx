@@ -1,7 +1,11 @@
+import { Settings } from "@/components/icons/Settings";
+import { useStorageStore } from "@/features/storage/storage.store";
+import * as FileSystem from "expo-file-system";
 import React, { useState } from "react";
+import { useShallow } from "zustand/shallow";
+import { Button } from "./ui/Button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -9,13 +13,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/Dialog";
-import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 import { Text } from "./ui/Text";
-import * as FileSystem from "expo-file-system";
-import { useStorageStore } from "@/features/storage/storage.store";
-import { useShallow } from "zustand/shallow";
-import { Settings } from "@/components/icons/Settings";
 
 export const StorageDialog = (props: { isOpen?: boolean }) => {
   const { directoryName, setDirectoryName, setDirectoryUri } = useStorageStore(
@@ -25,7 +24,7 @@ export const StorageDialog = (props: { isOpen?: boolean }) => {
       setDirectoryUri: state.setDirectoryUri,
     }))
   );
-  const [isOpen, setIsOpen] = useState(props.isOpen);
+  const [isOpen, setIsOpen] = useState(props.isOpen ?? false);
 
   const [input, setInput] = useState<string>(directoryName ?? "");
 
